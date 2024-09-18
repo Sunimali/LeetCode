@@ -1,4 +1,3 @@
-import copy
 class Solution(object):
     def productExceptSelf(self, nums):
         """
