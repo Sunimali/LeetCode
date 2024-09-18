@@ -6,10 +6,9 @@ class Solution(object):
         :rtype: List[int]
         """
         size = len(nums)
-        postNum = copy.copy(nums)
+        postNum = [1]* size
 
         for i in range(size-1,-1,-1):
-            # print(i)
             if(i==size-1):
                 postNum[i] = nums[i]
             else:
