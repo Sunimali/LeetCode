@@ -1,3 +1,4 @@
+import copy
 class Solution(object):
     def productExceptSelf(self, nums):
         """
@@ -5,7 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
         size = len(nums)
-        postNum = [1]* size
+        postNum = copy.copy(nums)
 
         for i in range(size-1,-1,-1):
             if(i==size-1):
