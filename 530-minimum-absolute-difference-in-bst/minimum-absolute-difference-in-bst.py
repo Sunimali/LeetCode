@@ -7,8 +7,7 @@
 class Solution(object):
 
     def __init__(self):
-        self.ordered = []  # Track the previous node's value during traversal
-        self.itr =0
+        self.prev = None #pervius node value
         self.min_diff = float('inf')  # Initialize min_diff to a large number
     
    
@@ -23,12 +22,10 @@ class Solution(object):
         else:
             #in order traversal
             self.getMinimumDifference(root.left) 
-            if(self.itr !=0): #skip updating in first element
-                if(self.min_diff>abs(root.val - self.ordered[self.itr-1])):
-                    self.min_diff = abs(root.val - self.ordered[self.itr-1] )#update diff
-
-            self.ordered.append(root.val)
-            self.itr = self.itr+ 1
+            if(self.prev is not None): #skip first one since nothing to compare
+                if( self.min_diff> abs(root.val - self.prev)): #check diff with current
+                    self.min_diff =  abs(root.val - self.prev)
+            self.prev = root.val #set the revius value        
             self.getMinimumDifference(root.right)
             return self.min_diff
           
