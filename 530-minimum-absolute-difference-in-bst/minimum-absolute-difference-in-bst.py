@@ -19,15 +19,15 @@ class Solution(object):
        
         if root is None:
             return self.min_diff #return current min diff
-        else:
-            #in order traversal
-            self.getMinimumDifference(root.left) 
-            if(self.prev is not None): #skip first one since nothing to compare
-                if( self.min_diff> abs(root.val - self.prev)): #check diff with current
-                    self.min_diff =  abs(root.val - self.prev)
-            self.prev = root.val #set the revius value        
-            self.getMinimumDifference(root.right)
-            return self.min_diff
+       
+        #in order traversal
+        self.getMinimumDifference(root.left) 
+        if(self.prev is not None): #skip first one since nothing to compare
+            if( self.min_diff> root.val - self.prev): #check diff with current
+                self.min_diff =  root.val - self.prev
+        self.prev = root.val #set the revius value        
+        self.getMinimumDifference(root.right)
+        return self.min_diff
           
     
 
