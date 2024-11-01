@@ -21,7 +21,6 @@ class Solution(object):
 
             while(c1 is not None):
                 while(c2 is not None and c1.val>c2.val  ):
-                    print("no")
                     c2_prev = c2
                     c2 = c2.next
                 node = ListNode(c1.val)
