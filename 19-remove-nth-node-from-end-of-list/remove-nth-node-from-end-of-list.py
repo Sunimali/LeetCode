@@ -24,11 +24,10 @@ class Solution(object):
             prev = slow #store previous
             slow = slow.next
             fast = fast.next
-
         #now slow is n
         #prev is n + 1 from last
 
-        if prev is None:
+        if prev is None: #n is equal to length
             return slow.next
         temp = slow.next # n -1 from last 
         prev.next = temp
