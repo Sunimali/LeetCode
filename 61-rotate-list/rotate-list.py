@@ -12,11 +12,10 @@ class Solution(object):
         """
 
         #slow and fast pointers
-
         slow = head
         fast = head
 
-        dummy  = ListNode(0)
+        dummy  = ListNode(0) #dummy node
         dummy.next = head
         
         count = 0
@@ -26,18 +25,17 @@ class Solution(object):
                
         if count == 0 or count == 1: #no element or only one element
             return dummy.next        
-        if count <= k:
+        if count <= k: #k >= length of the list
             k = k % count #find new k
         if k == 0:
             return dummy.next    
         fast = head
         for i in range(k): #move fast pointer by k
-            fast = fast.next
-                
+            fast = fast.next         
         #else do the rotation
         fast_prev = None
         slow_prev = None
-        while fast is not None:
+        while fast is not None: #find the fotation portion
             slow_prev = slow
             slow = slow.next
             fast_prev = fast
