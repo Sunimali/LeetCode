@@ -11,31 +11,31 @@ class Solution(object):
         :type inorder: List[int]
         :rtype: Optional[TreeNode]
         """
-
-        if not preorder or not inorder:
+        if not preorder:
             return None
+        #find the root
+        t =  TreeNode(preorder[0]) #get the forst node is pre order list
 
-        # The first element in preorder is the root node
-        root_val = preorder[0]
-        root = TreeNode(root_val)
+        index = inorder.index(preorder[0]) #find the root index from preoder
 
-        # Find the index of the root in inorder to split left and right subtrees
-        root_index_in_inorder = inorder.index(root_val)
+        inorder_left = inorder[:index] #divide and find new inorder and pre over
+        inorder_right = inorder[index+1:]
 
-        # Elements to the left in inorder are the left subtree
-        # Elements to the right in inorder are the right subtree
-        left_inorder = inorder[:root_index_in_inorder]
-        right_inorder = inorder[root_index_in_inorder + 1:]
+        preorder_left = preorder[1:1+ index]
+        preorder_right = preorder[1+ index:]
 
-        # Use the length of left_inorder to find the corresponding elements in preorder
-        left_preorder = preorder[1:1 + len(left_inorder)]
-        right_preorder = preorder[1 + len(left_inorder):]
+        #create left subtree
+        t.left = self. buildTree(preorder_left,inorder_left)
+        t.right = self. buildTree(preorder_right,inorder_right)
 
-        # Recursively build left and right subtrees
-        root.left = self.buildTree(left_preorder, left_inorder)
-        root.right = self.buildTree(right_preorder, right_inorder)
+        return t
 
-        return root
+
+
+
+
+
+        
             
                  
 
