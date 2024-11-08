@@ -10,6 +10,29 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
+
+        queue = []
+        answer = []
+
+        queue.append(root)
+        while queue: #if not empty
+            size = len(queue)
+            ans = []
+
+            for i in range(size):
+                t = queue.pop(0)
+                if t is not None:
+                    ans.append(t.val)
+                    queue.append(t.left)
+                    queue.append(t.right)  
+            if ans:
+                answer.append(ans)
+
+        return answer    
+
+
+        #iterative method 
+
         # h = self.depth(root)
         # answer = []
         # for i in range(1,h+1):
@@ -18,19 +41,19 @@ class Solution(object):
         #     answer.append(ans)
         # return answer
 
-        level = 0
-        ans = []
-        self.traverse(root,level,ans)
-        return ans
+    #     level = 0
+    #     ans = []
+    #     self.traverse(root,level,ans)
+    #     return ans
 
-    def traverse(self, root, level, ans):
-        if root is None:
-            return
-        if level == len(ans):
-            ans.append([])
-        ans[level].append(root.val)
-        self.traverse(root.left, level+1, ans)
-        self.traverse(root.right, level+1,ans) 
+    # def traverse(self, root, level, ans):
+    #     if root is None:
+    #         return
+    #     if level == len(ans):
+    #         ans.append([])
+    #     ans[level].append(root.val)
+    #     self.traverse(root.left, level+1, ans)
+    #     self.traverse(root.right, level+1,ans) 
             
   
 
