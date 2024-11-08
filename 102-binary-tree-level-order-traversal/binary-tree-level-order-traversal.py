@@ -20,7 +20,7 @@ class Solution(object):
 
     def traversal(self, root, level, ans):
         if root is None:
-            return ans
+            return
         elif level == 1:
             ans.append(root.val)
         else:
