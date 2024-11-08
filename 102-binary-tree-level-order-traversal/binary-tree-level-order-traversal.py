@@ -10,25 +10,41 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: List[List[int]]
         """
-        h = self.depth(root)
-        answer = []
-        for i in range(1,h+1):
-            ans = []
-            self.traversal(root,i, ans)
-            answer.append(ans)
-        return answer    
+        # h = self.depth(root)
+        # answer = []
+        # for i in range(1,h+1):
+        #     ans = []
+        #     self.traversal(root,i, ans)
+        #     answer.append(ans)
+        # return answer
 
-    def traversal(self, root, level, ans):
+        level = 0
+        ans = []
+        self.traverse(root,level,ans)
+        return ans
+
+    def traverse(self, root, level, ans):
         if root is None:
             return
-        elif level == 1:
-            ans.append(root.val)
-        else:
-            self.traversal(root.left, level-1, ans)
-            self.traversal(root.right, level-1, ans)                
+        if level == len(ans):
+            ans.append([])
+        ans[level].append(root.val)
+        self.traverse(root.left, level+1, ans)
+        self.traverse(root.right, level+1,ans) 
+            
+  
 
-    def depth(self,root):
-        if root is None:
-            return 0
-        else:
-            return 1+ max(self.depth(root.left), self.depth(root.right))       
+    # def traversal(self, root, level, ans):
+    #     if root is None:
+    #         return
+    #     elif level == 1:
+    #         ans.append(root.val)
+    #     else:
+    #         self.traversal(root.left, level-1, ans)
+    #         self.traversal(root.right, level-1, ans)                
+
+    # def depth(self,root):
+    #     if root is None:
+    #         return 0
+    #     else:
+    #         return 1+ max(self.depth(root.left), self.depth(root.right))       
