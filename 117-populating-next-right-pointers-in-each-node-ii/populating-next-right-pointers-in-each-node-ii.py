@@ -19,27 +19,20 @@ class Solution(object):
         queue = deque()
         queue.append(root)
 
-
         while queue: #while is not empty
-
-            size = len(queue)
+            size = len(queue)  #get the node count in one level
             current = None
-            prev = None
-
-            print(size)
- 
-            for i in range(size):
+            prev = None 
+            for i in range(size): #iterate through all noeds in level
                 t = queue.popleft()
                 current = t
-
-                if prev is None:
+                if prev is None: #initial one in level
                     prev = current
-                else:
+                else: #next ones
                     prev.next = current
                     prev = current
-
-                if t is not None:
-                    if t.left:
+                if t is not None: # if t is empty ignore
+                    if t.left: #only add to queue if it not null
                         queue.append(t.left)
                     if t.right:      
                         queue.append(t.right) 
