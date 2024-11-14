@@ -15,14 +15,11 @@ class Solution(object):
                     continue
                 else: #is O
                     #invalide O
-                    if i == 0 or j == 0 or i == m - 1 or j == n-1: 
-
-                        # board[i][j] = 'I' #INVALID
+                    if i == 0 or j == 0 or i == m - 1 or j == n-1:  #INVALID
                         self.backtrack(board,i,j,m,n)
 
                         #backtrack the neighbours valid ones
-                    elif(board[i-1][j]=='I' or board[i+1][j]=='I' or board[i][j+1]=='I' or board[i][j-1]=='I'):
-                        # board[i][j] = 'I' #INVALID 
+                    elif(board[i-1][j]=='I' or board[i+1][j]=='I' or board[i][j+1]=='I' or board[i][j-1]=='I'): #INVALID 
                         self.backtrack(board,i,j,m,n)        
                     else:
                         board[i][j] = 'V' #VALID
