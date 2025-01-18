@@ -14,9 +14,7 @@ class Solution(object):
 
     def rec_permute(self, nums, current,results ):
         if len(current) == len(nums):
-            
             results.append(current[:])
-            
             return results
        
         for item in nums:
