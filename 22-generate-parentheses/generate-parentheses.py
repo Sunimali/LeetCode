@@ -9,7 +9,7 @@ class Solution(object):
         return current
      
     def rec_pranthesis(self, itr, current, n):
-        next_list = []
+        next_list = set()
         if itr > n: 
             return current
         else:
@@ -17,11 +17,11 @@ class Solution(object):
                 for p in range(len(item)):
                     if(item[p]=='('):
                         new_item = item[0:p+1]+ '()'+ item[p+1:len(item)]
-                        if new_item not in next_list:
-                            next_list.append(new_item)
+                       
+                        next_list.add(new_item)
                 
-                next_list.append(item+'()')
-            return self.rec_pranthesis( itr+1, next_list,n)
+                next_list.add(item+'()')
+            return self.rec_pranthesis( itr+1, list(next_list),n)
                         
 
                 
