@@ -13,12 +13,12 @@ class Solution(object):
         :rtype: Node
         """
         c = None
-        visited = set()
+
         older_map = {}
         
-        c = self.dfs(node,c,visited, older_map)
+        c = self.dfs(node, c, older_map)
         return c
-    def dfs(self,node,c, visited, older_map ):
+    def dfs(self,node,c, older_map ):
 
         if node is None:
             return c
@@ -30,7 +30,7 @@ class Solution(object):
             older_map[node] = clone
    
             for n in node.neighbors:
-                clone.neighbors.append(self.dfs(n, c, visited, older_map ))
+                clone.neighbors.append(self.dfs(n, c,older_map ))
             
             return clone
         
