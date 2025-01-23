@@ -29,7 +29,9 @@ class Solution:
                 ans = int(l[l_size - 1])+ int(s[l_size - diff - 1]) + carry
 
             carry = ans// 2
+            
             out = str(ans%2) + out 
+
             l_size = l_size - 1
         
         if carry != 0:
