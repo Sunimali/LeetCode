@@ -28,13 +28,8 @@ class Solution:
             else:
                 ans = int(l[l_size - 1])+ int(s[l_size - diff - 1]) + carry
 
-            if ans > 1:
-                carry = ans// 2
-
-                out = str(ans%2) + out 
-            else:
-                out = str(ans) + out
-                carry = 0 
+            carry = ans// 2
+            out = str(ans%2) + out 
             l_size = l_size - 1
         
         if carry != 0:
