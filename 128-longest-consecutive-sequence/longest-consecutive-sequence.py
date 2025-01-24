@@ -6,10 +6,7 @@ class Solution:
         dic = {}  # Dictionary to store the next consecutive element
         size = len(nums)
 
-        # if size == 1:
-        #     return 1
-        
-
+     
         for i in range(size):
             if nums[i] not in dic:
                 pre = nums[i] - 1
@@ -39,9 +36,8 @@ class Solution:
         #         result = max(result, temp)
 
         for key in dic.keys():
-            # Skip this key if it's already processed
-            # if dic[key] is None:
-            #     continue
+            # Skip this key if it's not a beginining #this is the key point in alogrithem
+           
             if key - 1 in dic:
                 continue
 
@@ -51,11 +47,7 @@ class Solution:
             # Traverse the sequence starting from `key`
             while current in dic:
                 temp += 1
-                next_element = dic[current]
-                # dic[current] = None  # Mark as visited
-                # if next_element is None:
-                #     break
-                current = next_element
+                current =  dic[current]
 
             if temp > result:
                 result = temp
