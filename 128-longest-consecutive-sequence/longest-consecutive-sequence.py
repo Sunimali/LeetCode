@@ -1,40 +1,5 @@
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-
-        # if not nums:
-        #     return 0
-
-        # # Dictionary to store the next number in the sequence
-        # num_dict = {}
-
-        # # Add unique numbers and initialize their "next" values
-        # for num in nums:
-        #     if num not in num_dict:
-        #         # Initially, no next number is assigned
-        #         num_dict[num] = None
-        #         # Update links for consecutive numbers
-        #         if num - 1 in num_dict:
-        #             num_dict[num - 1] = num
-        #         if num + 1 in num_dict:
-        #             num_dict[num] = num + 1
-
-        # # Now, find the longest consecutive sequence
-        # result = 0
-
-        # for num in num_dict.keys():
-        #     # Only process the start of a sequence
-        #     if num - 1 not in num_dict:
-        #         temp = 0
-        #         current = num
-        #         # Follow the "next" pointers to count the sequence length
-        #         while current is not None:
-        #             temp += 1
-        #             current = num_dict[current]
-
-        #         # Update the maximum sequence length
-        #         result = max(result, temp)
-
-        # return result
         if not nums:
             return 0
 
