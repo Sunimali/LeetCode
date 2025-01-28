@@ -3,11 +3,9 @@ class Solution:
 
         size = len(intervals)
         new_intervals = []
-
         no_merge = True
 
         for i in range(size):
-
             interval = intervals[i]
 
             #whole inteverl is leftside of new interval then add to newlist
@@ -24,11 +22,10 @@ class Solution:
                 continue
 
             #overlapped with new_interval
-
             newInterval[0] = min(interval[0],newInterval[0])
             newInterval[1] = max(interval[1],newInterval[1])
 
-        if no_merge:
+        if no_merge: #if already not added new interval
             new_intervals.append(newInterval)
 
         return new_intervals
