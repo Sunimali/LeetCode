@@ -4,7 +4,7 @@ class Solution:
         l = 0
         r = len(height) - 1
 
-        while l < len(height) and r > 0:
+        while l < r:
             area = min(height[l], height[r]) *  (r- l)
             cur_max  = max(cur_max, area)
 
