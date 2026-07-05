@@ -1,11 +1,17 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        s_new = ''.join(letter for letter in s if letter.isalnum()).lower()
-        s_new_reversed = s_new[::-1]
+from collections import deque
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
 
-        return s_new == s_new_reversed
+        secstring = ""
+        stackstring = ""
+        stack = deque()
+
+        for i in s:
+            if i.isalnum():
+                i_lower = i.lower()
+                secstring += i_lower
+                stack.append(i_lower) 
+        while stack:
+            stackstring+= stack.pop()
+        return stackstring == secstring
         
