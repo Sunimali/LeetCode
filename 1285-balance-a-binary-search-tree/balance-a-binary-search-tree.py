@@ -22,7 +22,7 @@ class Solution:
         def build(nodes):
             if not nodes:
                 return None
-            mid = (len(nodes))//2
+            mid = (len(nodes)-1)//2
             root = nodes[mid]
             
             root.left = build(nodes[:mid])
