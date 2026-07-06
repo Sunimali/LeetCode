@@ -1,31 +1,36 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def sumNumbers(self, root):
-        """
-        :type root: Optional[TreeNode]
-        :rtype: int
-        """
-        current_sum = 0
-        num = ""
-        current_sum = self.sumrec(root,current_sum,num)
-        return current_sum
+class Solution:
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+
+        ans = []
+        total = 0
+        st = ""
+        def preorder(node, st):
+            if node is None:
+                return ""
+            if node.left is None and node.right is None: #leaf node
+                st  = st + str(node.val)
+                val  = int(st)
+                ans.append(val)
+                return
+            else:
+                st = st + str(node.val)
+                preorder(node.left, st)
+                preorder(node.right, st)
+        
+        preorder(root, st)
+
+        for s in ans:
+            total+= s
+        return total
 
         
-    def sumrec(self,root,current_sum,num):
-        if root is None:
-            return 0
-        elif root.left is None and root.right is None:#leaf node
-            num = num + str(root.val)
-            current_sum = current_sum + atoi(num)
-            return current_sum
-        else:
-            num = num + str(root.val)
-            return self.sumrec(root.left,current_sum,num) + self.sumrec(root.right,current_sum,num)
+
 
 
 
