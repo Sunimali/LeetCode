@@ -7,27 +7,48 @@
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
 
+        # ans = []
+        # total = 0
+        # st = ""
+        # def preorder(node, st):
+        #     if node is None:
+        #         return ""
+        #     if node.left is None and node.right is None: #leaf node
+        #         st  = st + str(node.val)
+        #         val  = int(st)
+        #         ans.append(val)
+        #         return
+        #     else:
+        #         st = st + str(node.val)
+        #         preorder(node.left, st)
+        #         preorder(node.right, st)
+        
+        # preorder(root, st)
+
+        # for s in ans:
+        #     total+= s
+        # return total
+
         ans = []
         total = 0
-        st = ""
-        def preorder(node, st):
+
+        def preorder(node, val):
             if node is None:
                 return ""
-            if node.left is None and node.right is None: #leaf node
-                st  = st + str(node.val)
-                val  = int(st)
+            if node.left is None and node.right is None:
+                val = val*10 + node.val
                 ans.append(val)
-                return
             else:
-                st = st + str(node.val)
-                preorder(node.left, st)
-                preorder(node.right, st)
+                val = val*10 + node.val
+                preorder(node.left, val)
+                preorder(node.right, val)
         
-        preorder(root, st)
+        preorder(root, 0)
 
         for s in ans:
-            total+= s
+            total += s
         return total
+
 
         
 
