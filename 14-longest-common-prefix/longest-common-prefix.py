@@ -1,26 +1,34 @@
-class Solution(object):
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
-
-        strs.sort(key=len) #sort by the length
-        shortword = strs[0] #get the minimum length word
-        swsize = len(shortword)
-        ps = swsize
-        for i in strs: #iterate through all words
-            if ps <0:
-                break
-            for j in range(ps): #iterate through possible prefix
-                if i[j] != shortword[j]:
-                    ps = j  #update the prefix length
-                    break #move to next word
-        if ps == 0:
-            return ""
-        else:
-            return shortword[:ps]  #return longeth prefix
-
-
-
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
         
+        if strs is None:
+            return ""
+        if len(strs) == 1:
+            return strs[0]
+
+        min_index = min(range(len(strs)), key = lambda i: len(strs[i]))
+        small = strs[min_index]
+        prefix = []
+
+        for i, s in enumerate(small):
+            exists = False
+            for j, st in enumerate(strs) :
+                
+                if j == min_index:
+                    continue
+                if st[i] == s: #prefix
+                    exists = True
+                else:
+                    exists = False
+                    break
+            if exists:
+                prefix.append(s)
+            else:
+                break
+            
+        
+        
+        return "".join(prefix)
+
+
+
